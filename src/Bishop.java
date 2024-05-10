@@ -1,22 +1,13 @@
 import java.util.ArrayList;
 
-public class King extends Piece {
-    boolean mate;
-    boolean check;
+public class Bishop extends Piece {
+
+
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
-    public King (int color, int square) {
+    public Bishop (int color, int square) {
         super(color, square);
-        this.mate = false;
-        this.check = false;
-    }
-
-    public boolean getMate() {
-        return mate;
-    }
-    public boolean getCheck() {
-        return check;
     }
     public int getColor() {
         return color;
