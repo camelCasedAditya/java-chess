@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import java.awt.Container;
 import java.awt.GridLayout;
 
@@ -6,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class App {
+	static ArrayList<Piece> pieceList = new ArrayList<Piece>();
 	JFrame frame = new JFrame();
 	int xWidth=800;
 	int yWidth=800;
@@ -37,6 +39,33 @@ public class App {
 	
 	public static void main(String[] args) {
 		new App();
+	}
+
+
+
+	public static boolean isSquareAvailible(int color, int row, int col) {
+		// int oppositeColor = -1;
+		// if (color == 1) {oppositeColor = 0;}
+		// else if (color == 0) {oppositeColor = 1;}
+		for (int i = 0; i < pieceList.size(); i++) {
+			if ((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col) && (pieceList.get(i).getColor() != color)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public void addPiece(Piece piece) {
+		pieceList.add(piece);
+	}
+	public Piece getPiece(int row, int col) {
+		for (int i = 0; i < pieceList.size(); i++) {
+			if ((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col)) {
+				return pieceList.get(i);
+			}
+		}
+		return null;
 	}
 	
 

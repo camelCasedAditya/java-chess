@@ -17,7 +17,7 @@ public class Rook extends Piece {
         ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
         // Row
         for (int row = piece.row; row < 8; row++) {
-            if(chessPanel.isSquareAvailible(piece.color, row, piece.col) == true) {
+            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
                 int[] move = {row, piece.col};
                 possibleMoves.add(move);
             }
@@ -26,7 +26,7 @@ public class Rook extends Piece {
             }
         }
         for (int row = piece.row; row >= 0; row--) {
-            if(chessPanel.isSquareAvailible(piece.color, row, piece.col) == true) {
+            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
                 int[] move = {row, piece.col};
                 possibleMoves.add(move);
             }
@@ -36,7 +36,7 @@ public class Rook extends Piece {
         }
 
         for (int col = piece.col; col < 8; col++) {
-            if(chessPanel.isSquareAvailible(piece.color, piece.row, col) == true) {
+            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
                 int[] move = {piece.row, col};
                 possibleMoves.add(move);
             }
@@ -46,7 +46,7 @@ public class Rook extends Piece {
         }
 
         for (int col = piece.col; col >= 0; col--) {
-            if(chessPanel.isSquareAvailible(piece.color, piece.row, col) == true) {
+            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
                 int[] move = {piece.row, col};
                 possibleMoves.add(move);
             }
