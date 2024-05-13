@@ -2,19 +2,14 @@ import java.util.ArrayList;
 
 public class Rook extends Piece {
 
-    
+    ArrayList<int[]> possibleMoves = new ArrayList<int[]>();    
 
     public Rook (int color, int row, int col) {
         super(color, row, col, "Rook");
     }
-    
-
-    public ArrayList<Integer> getPossibleMoves() {
-        return possibleMoves;
-    }
 
     public ArrayList<int[]> getPossibleMoves(Piece piece) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        possibleMoves.clear();
         // Row
         for (int row = piece.row; row < 8; row++) {
             if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
