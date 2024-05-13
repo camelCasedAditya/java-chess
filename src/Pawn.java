@@ -7,21 +7,28 @@ public class Pawn extends Piece {
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
-    public Pawn (int color, int square) {
-        super(color, square);
+    public Pawn (int color, int row, int col) {
+        super(color, row, col);
         onStartingSquare = true;
         enPassantAvailble = false;
     }
-    public int getColor() {
-        return color;
-    }
-    public int getCurrentSquare() {
-        return square;
-    }
+    // public int getColor() {
+    //     return color;
+    // }
+    // public int getRow() {
+    //     return row;
+    // }
 
-    public void setCurrentSquare(int newsquare) {
-        this.square = newsquare;
-    }
+    // public void setRow(int row) {
+    //     this.row = row;
+    // }
+    // public int getCol() {
+    //     return col;
+    // }
+
+    // public void setCol(int col) {
+    //     this.col = col;
+    // }
 
     public ArrayList<Integer> getPossibleMoves() {
         return possibleMoves;

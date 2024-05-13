@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class chessGame {
+public class App {
 	JFrame frame = new JFrame();
 	int xWidth=800;
 	int yWidth=800;
@@ -13,7 +13,7 @@ public class chessGame {
 	Container center = new Container();
 	
 	
-	public chessGame() {
+	public App() {
 		//Sets size of screen
 		frame.setSize(xWidth,yWidth);
 		frame.setLayout(new BorderLayout());
@@ -36,7 +36,7 @@ public class chessGame {
 	}
 	
 	public static void main(String[] args) {
-		new chessGame();
+		new App();
 	}
 	
 

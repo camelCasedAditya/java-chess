@@ -6,8 +6,8 @@ public class King extends Piece {
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
-    public King (int color, int square) {
-        super(color, square);
+    public King (int color, int row, int col) {
+        super(color, row, col);
         this.mate = false;
         this.check = false;
     }
@@ -18,16 +18,23 @@ public class King extends Piece {
     public boolean getCheck() {
         return check;
     }
-    public int getColor() {
-        return color;
-    }
-    public int getCurrentSquare() {
-        return square;
-    }
+    // public int getColor() {
+    //     return color;
+    // }
+    // public int getRow() {
+    //     return row;
+    // }
 
-    public void setCurrentSquare(int newsquare) {
-        this.square = newsquare;
-    }
+    // public void setRow(int row) {
+    //     this.row = row;
+    // }
+    // public int getCol() {
+    //     return col;
+    // }
+
+    // public void setCol(int col) {
+    //     this.col = col;
+    // }
 
     public ArrayList<Integer> getPossibleMoves() {
         return possibleMoves;
