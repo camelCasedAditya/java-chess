@@ -4,13 +4,15 @@ public class Piece {
     int color;
     int row;
     int col;
+    String pieceName;
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
-    public Piece(int pieceColor, int row, int col) {
+    public Piece(int pieceColor, int row, int col, String pieceName) {
         this.color = pieceColor;
         this.row = row;
         this.col = col;
+        this.pieceName=pieceName;
     }
 
     public int getColor() {
@@ -30,6 +32,7 @@ public class Piece {
     public void setCol(int col) {
         this.col = col;
     }
+
 
 
     // public static addPiece

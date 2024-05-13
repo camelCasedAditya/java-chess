@@ -7,7 +7,7 @@ public class Bishop extends Piece {
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
     public Bishop (int color, int row, int col) {
-        super(color, row, col);
+        super(color, row, col,"Bishop");
     }
     // public int getColor() {
     //     return color;

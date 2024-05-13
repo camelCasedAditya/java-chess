@@ -5,7 +5,7 @@ public class Rook extends Piece {
     
 
     public Rook (int color, int row, int col) {
-        super(color, row, col);
+        super(color, row, col, "Rook");
     }
     
 

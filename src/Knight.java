@@ -5,7 +5,7 @@ public class Knight extends Piece {
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
     public Knight (int color, int row, int col) {
-        super(color, row, col);
+        super(color, row, col, "Knight");
     }
     // public int getColor() {
     //     return color;

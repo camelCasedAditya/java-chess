@@ -7,7 +7,7 @@ public class King extends Piece {
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
     public King (int color, int row, int col) {
-        super(color, row, col);
+        super(color, row, col,"King");
         this.mate = false;
         this.check = false;
     }
