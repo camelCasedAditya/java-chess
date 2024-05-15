@@ -8,42 +8,58 @@ public class Rook extends Piece {
         super(color, row, col, "Rook");
     }
 
-    public ArrayList<int[]> getPossibleMoves(Piece piece) {
+    public ArrayList<int[]> getPossibleMoves() {
         possibleMoves.clear();
         // Row
-        for (int row = piece.row; row < 8; row++) {
-            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
-                int[] move = {row, piece.col};
+        for (int row = this.row; row < 8; row++) {
+            if(App.isSquareAvailible(this.color, row, this.col) == true) {
+                int[] move = {row, this.col};
                 possibleMoves.add(move);
+                System.out.println(move[0] + ":" + move[1]);
+                if(App.getPiece(row, this.col) != null) {
+                    break;
+                }
             }
             else {
                 break;
             }
         }
-        for (int row = piece.row; row >= 0; row--) {
-            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
-                int[] move = {row, piece.col};
-                possibleMoves.add(move);
+        for (int row = this.row; row >= 0; row--) {
+            if(App.isSquareAvailible(this.color, row, this.col) == true) {
+                int[] move = {row, this.col};
+                possibleMoves.add(move); 
+                System.out.println(move[0] + ":" + move[1]);
+                if(App.getPiece(row, this.col) != null) {
+                    break;
+                }
             }
             else {
                 break;
             }
         }
 
-        for (int col = piece.col; col < 8; col++) {
-            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
-                int[] move = {piece.row, col};
+        for (int col = this.col; col < 8; col++) {
+            if(App.isSquareAvailible(this.color, this.row, col) == true) {
+                int[] move = {this.row, col};
                 possibleMoves.add(move);
+                System.out.println(move[0] + ":" + move[1]);
+                if(App.getPiece(this.row, col) != null) {
+                    break;
+                }
             }
             else {
                 break;
             }
         }
 
-        for (int col = piece.col; col >= 0; col--) {
-            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
-                int[] move = {piece.row, col};
+        for (int col = this.col; col >= 0; col--) {
+            if(App.isSquareAvailible(this.color, this.row, col) == true) {
+                int[] move = {this.row, col};
                 possibleMoves.add(move);
+                System.out.println(move[0] + ":" + move[1]);
+                if(App.getPiece(this.row, col) != null) {
+                    break;
+                }
             }
             else {
                 break;
