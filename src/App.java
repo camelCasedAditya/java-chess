@@ -13,6 +13,8 @@ public class App {
 	int yWidth=800;
 	JButton[][] button = new JButton[8][8];
 	Container center = new Container();
+
+	
 	
 	
 	public App() {
@@ -20,13 +22,21 @@ public class App {
 		frame.setSize(xWidth,yWidth);
 		frame.setLayout(new BorderLayout());
 		center.setLayout(new GridLayout(8,8));
+		King king = new King(0, 0, 4);
+		pieceList.add(king); 
 		//i is for row
 		for (int i = 0; i < button.length; i++) {
 			//j is for column
 			for (int j = 0; j < button[0].length; j++) {
-				button[j][i] = new JButton(j+""+i);
-				center.add(button[j][i]);
+				button[i][j] = new JButton((i+1)+":"+(j+1));
+				center.add(button[i][j]);
 			}
+		}
+
+		for(int i = 0; i < pieceList.size(); i++) {
+			int row = pieceList.get(i).getRow();
+			int col = pieceList.get(i).getCol();
+			button[row][col].setText(pieceList.get(i).getPieceName());
 		}
 		frame.add(center, BorderLayout.CENTER);
 

@@ -16,17 +16,20 @@ public class Pawn extends Piece {
     public ArrayList<int[]> getPossibleMoves(Piece piece) {
         possibleMoves.clear();
         if (onStartingSquare == true) {
-            if (App.isSquareAvailible(color, row, col))
+            if (App.isSquareAvailible(color, row, col)) {
+                return null;
+            }
         }
         return null;
     }
 
     public boolean isSquareAvailbleForPawnPush() {
-        for (int i = 0; i < pieceList.size(); i++) {
-			if ((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col) && (pieceList.get(i).getColor() != color) && ()) {
+        for (int i = 0; i < App.pieceList.size(); i++) {
+			if ((App.pieceList.get(i).getRow() == row) && (App.pieceList.get(i).getCol() == col) && (App.pieceList.get(i).getColor() != color) && (true)) {
 				return false;
 			}
 		}
+        return false;
     }
     // public int getColor() {
     //     return color;

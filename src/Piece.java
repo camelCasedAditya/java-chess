@@ -33,6 +33,10 @@ public class Piece {
         this.col = col;
     }
 
+    public String getPieceName() {
+        return this.pieceName;
+    }
+
 
 
     // public static addPiece
