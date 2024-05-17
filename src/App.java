@@ -31,9 +31,9 @@ public class App {
 		pieceList.add(rook);
 
 		ArrayList<int[]> rookMoves = rook.getPossibleMoves();
-		// for(int i = 0; i<rookMoves.size(); i++) {
-		// System.out.println(rookMoves.get(i)[0] + ":" + rookMoves.get(i)[1]);
-		// }
+		for(int i = 0; i<rookMoves.size(); i++) {
+			System.out.println(rookMoves.get(i)[0] + ":" + rookMoves.get(i)[1]);
+		}
 		// i is for row
 		for (int i = 0; i < button.length; i++) {
 			// j is for column
@@ -65,10 +65,15 @@ public class App {
 		// int oppositeColor = -1;
 		// if (color == 1) {oppositeColor = 0;}
 		// else if (color == 0) {oppositeColor = 1;}
-		for (int i = 0; i < pieceList.size(); i++) {
-			if (((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col)
-					&& (pieceList.get(i).getColor() != color)) || (getPiece(row, col) == null)) {
-				return true;
+		if (getPiece(row, col) == null) {
+			return true;
+		}
+		else {
+			for (int i = 0; i < pieceList.size(); i++) {
+				if (((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col)
+						&& (pieceList.get(i).getColor() != color))) {
+					return true;
+				}
 			}
 		}
 

@@ -11,58 +11,66 @@ public class Rook extends Piece {
     public ArrayList<int[]> getPossibleMoves() {
         possibleMoves.clear();
         // Row
-        for (int row = this.row; row < 8; row++) {
-            if(App.isSquareAvailible(this.color, row, this.col) == true) {
-                int[] move = {row, this.col};
-                possibleMoves.add(move);
-                System.out.println(move[0] + ":" + move[1]);
-                if(App.getPiece(row, this.col) != null) {
+        for (int r = this.row; r < 8; r++) {
+            if(App.getPiece(r, this.col) != this) {
+                if(App.isSquareAvailible(this.color, r, this.col) == true) {
+                    int[] move = {r, this.col};
+                    possibleMoves.add(move);
+                    //System.out.println(move[0] + ":" + move[1]);
+                    if((App.getPiece(r, this.col) != null) && (App.getPiece(r, this.col).getColor() != this.color)) {
+                        break;
+                    }
+                }
+                else {
                     break;
                 }
-            }
-            else {
-                break;
             }
         }
-        for (int row = this.row; row >= 0; row--) {
-            if(App.isSquareAvailible(this.color, row, this.col) == true) {
-                int[] move = {row, this.col};
-                possibleMoves.add(move); 
-                System.out.println(move[0] + ":" + move[1]);
-                if(App.getPiece(row, this.col) != null) {
+        for (int r = this.row; r >= 0; r--) {
+            if(App.getPiece(r, this.col) != this) {
+                if(App.isSquareAvailible(this.color, r, this.col) == true) {
+                    int[] move = {r, this.col};
+                    possibleMoves.add(move);
+                    //System.out.println(move[0] + ":" + move[1]);
+                    if((App.getPiece(r, this.col) != null) && (App.getPiece(r, this.col).getColor() != this.color)) {
+                        break;
+                    }
+                }
+                else {
                     break;
                 }
-            }
-            else {
-                break;
-            }
-        }
-
-        for (int col = this.col; col < 8; col++) {
-            if(App.isSquareAvailible(this.color, this.row, col) == true) {
-                int[] move = {this.row, col};
-                possibleMoves.add(move);
-                System.out.println(move[0] + ":" + move[1]);
-                if(App.getPiece(this.row, col) != null) {
-                    break;
-                }
-            }
-            else {
-                break;
             }
         }
 
-        for (int col = this.col; col >= 0; col--) {
-            if(App.isSquareAvailible(this.color, this.row, col) == true) {
-                int[] move = {this.row, col};
-                possibleMoves.add(move);
-                System.out.println(move[0] + ":" + move[1]);
-                if(App.getPiece(this.row, col) != null) {
+        for (int c = this.col; c < 8; c++) {
+            if(App.getPiece(this.row, c) != this) {
+                if(App.isSquareAvailible(this.color, this.row, c) == true) {
+                    int[] move = {this.row, c};
+                    possibleMoves.add(move);
+                    //System.out.println(move[0] + ":" + move[1]);
+                    if((App.getPiece(this.row, c) != null) && (App.getPiece(this.row, c).getColor() != this.color)) {
+                        break;
+                    }
+                }
+                else {
                     break;
                 }
             }
-            else {
-                break;
+        }
+
+        for (int c = this.col; c >= 0; c--) {
+            if(App.getPiece(this.row, c) != this) {
+                if(App.isSquareAvailible(this.color, this.row, c) == true) {
+                    int[] move = {this.row, c};
+                    possibleMoves.add(move);
+                    //System.out.println(move[0] + ":" + move[1]);
+                    if((App.getPiece(this.row, c) != null) && (App.getPiece(this.row, c).getColor() != this.color)) {
+                        break;
+                    }
+                }
+                else {
+                    break;
+                }
             }
         }
 
