@@ -23,12 +23,14 @@ public class App {
 		center.setLayout(new GridLayout(8, 8));
 		King king = new King(0, 0, 4);
 		Knight knight = new Knight(0, 0, 1);
-		Rook rook = new Rook(0, 0, 7);
+		Bishop rook = new Bishop(0, 4, 2);
+		Rook rook2 = new Rook (0, 2, 4);
 
 		// Rook rook
 		pieceList.add(king);
 		pieceList.add(knight);
 		pieceList.add(rook);
+		pieceList.add(rook2);
 
 		ArrayList<int[]> rookMoves = rook.getPossibleMoves();
 		for(int i = 0; i<rookMoves.size(); i++) {
