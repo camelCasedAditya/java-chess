@@ -19,81 +19,173 @@ public class King extends Piece {
     public boolean getCheck() {
         return check;
     }
-public ArrayList<int[]> getPossibleMoves(Piece piece) {
+    public ArrayList<int[]> getPossibleMoves(Piece piece) {
         possibleMoves.clear();
-        // Row
-        for (int row = piece.row; row < 8; row++) {
-            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
-                int[] move = {row, piece.col};
-                possibleMoves.add(move);
-                if(App.getPiece(row, piece.col) != null) {
-                    break;
-                }
-            }
-            else {
-                break;
-            }
-        }
-        for (int row = piece.row; row >= 0; row--) {
-            if(App.isSquareAvailible(piece.color, row, piece.col) == true) {
-                int[] move = {row, piece.col};
-                possibleMoves.add(move); 
-                if(App.getPiece(row, piece.col) != null) {
-                    break;
-                }
-            }
-            else {
-                break;
-            }
-        }
+        int r = this.row;
+        int c = this.col;
+        //int[] move = {r, c};
+        
 
-        for (int col = piece.col; col < 8; col++) {
-            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
-                int[] move = {piece.row, col};
-                possibleMoves.add(move);
-                if(App.getPiece(piece.row, col) != null) {
-                    break;
+        if ((r-1) >= 0) {
+            int[] pMove = {r - 1, c};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
                 }
             }
-            else {
-                break;
+
+            if (check == false) {
+                if(App.getPiece(r -1, c) != this) {
+                    if(App.isSquareAvailible(this.color, r - 1, c) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
             }
         }
 
-        for (int col = piece.col; col >= 0; col--) {
-            if(App.isSquareAvailible(piece.color, piece.row, col) == true) {
-                int[] move = {piece.row, col};
-                possibleMoves.add(move);
-                if(App.getPiece(piece.row, col) != null) {
-                    break;
+        if ((r+1) < 8) {
+            int[] pMove = {r + 1, c};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
                 }
             }
-            else {
-                break;
+
+            if (check == false) {
+                if(App.getPiece(r + 1, c) != this) {
+                    if(App.isSquareAvailible(this.color, r + 1, c) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
             }
         }
 
-        return possibleMoves;
-    }
-    // public int getColor() {
-    //     return color;
-    // }
-    // public int getRow() {
-    //     return row;
-    // }
+        if ((c+1) < 8) {
+            int[] pMove = {r, c + 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
 
-    // public void setRow(int row) {
-    //     this.row = row;
-    // }
-    // public int getCol() {
-    //     return col;
-    // }
+            if (check == false) {
+                if(App.getPiece(r, c + 1) != this) {
+                    if(App.isSquareAvailible(this.color, r, c + 1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
 
-    // public void setCol(int col) {
-    //     this.col = col;
-    // }
+        if ((c-1) >= 0) {
+            int[] pMove = {r, c - 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
 
-    public ArrayList<int[]> getPossibleMoves() {
+            if (check == false) {
+                if(App.getPiece(r, c - 1) != this) {
+                    if(App.isSquareAvailible(this.color, r, c - 1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
+
+        if (((r-1) >= 0) && ((c-1) >= 0)) {
+            int[] pMove = {r - 1, c - 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
+
+            if (check == false) {
+                if(App.getPiece(r-1, c-1) != this) {
+                    if(App.isSquareAvailible(this.color, r-1, c-1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
+
+        if (((r+1) < 8) && ((c-1) >= 0)) {
+            int[] pMove = {r + 1, c - 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
+
+            if (check == false) {
+                if(App.getPiece(r+1, c-1) != this) {
+                    if(App.isSquareAvailible(this.color, r+1, c-1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
+
+        if (((r-1) >= 0) && ((c+1) < 8)) {
+            int[] pMove = {r + 1, c - 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
+
+            if (check == false) {
+                if(App.getPiece(r-1, c+1) != this) {
+                    if(App.isSquareAvailible(this.color, r-1, c+1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
+
+        if (((r+1) < 8) && ((c+1) < 8)) {
+            int[] pMove = {r + 1, c - 1};
+            boolean check = false;
+            for (int i = 0; i < App.pieceList.size(); i++) {
+                if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    check = true;
+                }
+            }
+
+            if (check == false) {
+                if(App.getPiece(r+1, c+1) != this) {
+                    if(App.isSquareAvailible(this.color, r+1, c+1) == true) {
+                        int[] move = {r, c};
+                        possibleMoves.add(move);
+                        //System.out.println(move[0] + ":" + move[1]);
+                    }
+                }
+            }
+        }
+
         return possibleMoves;
     }
 }

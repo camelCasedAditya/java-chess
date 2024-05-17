@@ -37,6 +37,10 @@ public class Piece {
         return this.pieceName;
     }
 
+    public ArrayList<int[]> getPossibleMoves() {
+        return null;
+    }
+
 
 
     // public static addPiece
