@@ -23,7 +23,7 @@ public class App {
 		center.setLayout(new GridLayout(8, 8));
 		King king = new King(0, 0, 4);
 		Knight knight = new Knight(0, 0, 1);
-		Bishop rook = new Bishop(0, 4, 2);
+		Queen rook = new Queen(0, 4, 2);
 		Rook rook2 = new Rook (0, 2, 4);
 
 		// Rook rook
@@ -40,7 +40,7 @@ public class App {
 		for (int i = 0; i < button.length; i++) {
 			// j is for column
 			for (int j = 0; j < button[0].length; j++) {
-				button[i][j] = new JButton((i + 1) + ":" + (j + 1));
+				button[i][j] = new JButton((i + 0) + ":" + (j + 0));
 				center.add(button[i][j]);
 			}
 		}
