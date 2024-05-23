@@ -19,21 +19,22 @@ public class King extends Piece {
     public boolean getCheck() {
         return check;
     }
+
+    // Function to get possible moves
     public ArrayList<int[]> getPossibleMoves() {
         possibleMoves.clear();
         int r = this.row;
         int c = this.col;
+        System.out.println(this.row + "::" + this.col);
         //int[] move = {r, c};
         
-
+        // checks if king can move 1 row up
         if ((r-1) >= 0) {
             int[] pMove = {r - 1, c};
             boolean check = false;
-            // System.out.println(App.pieceList.size());
             for (int i = 0; i < App.pieceList.size(); i++) {
-                //System.out.println(App.pieceList.get(i).getPossibleMoves().contains(pMove));
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -55,7 +56,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -77,7 +78,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -99,7 +100,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -122,7 +123,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -144,7 +145,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -166,7 +167,7 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -188,7 +189,12 @@ public class King extends Piece {
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if (App.pieceList.get(i) != this) {
-                    if (App.pieceList.get(i).getPossibleMoves().contains(pMove) == true) {
+                    ArrayList<int[]> test = App.pieceList.get(2).getPossibleMoves();
+                    // for (int j =0; j<test.size(); j++) {
+                    //     System.out.println("check : " + test.get(j)[0] + ":" + test.get(j)[1]);
+                    // }
+                    System.out.println(App.pieceList.get(i).getPossibleMoves().contains(pMove));
+                    if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
                         check = true;
                     }
                 }
@@ -206,5 +212,17 @@ public class King extends Piece {
         }
 
         return possibleMoves;
+    }
+
+    public boolean pieceListContains(ArrayList<int[]> moveList, int[] inputArray) {
+        for (int i = 0; i < moveList.size(); i++) {
+            int moveR = moveList.get(i)[0];
+            int moveC = moveList.get(i)[1];
+            if ((moveR == inputArray[0]) && (moveC == inputArray[1])) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

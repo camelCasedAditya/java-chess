@@ -23,7 +23,7 @@ public class App {
 		center.setLayout(new GridLayout(8, 8));
 		King king = new King(0, 4, 3);
 		Knight knight = new Knight(1, 0, 1);
-		Knight rook = new Knight(0, 4, 2);
+		Knight rook = new Knight(1, 4, 2);
 		Rook rook2 = new Rook (0, 2, 4);
 
 		// Rook rook
