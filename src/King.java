@@ -30,18 +30,24 @@ public class King extends Piece {
         
         // checks if king can move 1 row up
         if ((r-1) >= 0) {
+            // Move that we are checking
             int[] pMove = {r - 1, c};
             boolean check = false;
+            // loops through every piece on the board
             for (int i = 0; i < App.pieceList.size(); i++) {
+                // if piece is not this piece
                 if(App.pieceList.get(i) != this) {
+                    // If that piece can move to this possible square (meaning a check on the king)
                     if (pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true) {
+                        // Say that there would be a check if the king moved there making it an illegal move
                         check = true;
                     }
                 }
             }
-
+            // If there is no check then we see if there are any pieces on that square
             if (check == false) {
                 if(App.getPiece(r -1, c) != this) {
+                    // If that square is availble we add the move to the possible moves arraylist
                     if(App.isSquareAvailible(this.color, r - 1, c) == true) {
                         int[] move = {r - 1, c};
                         possibleMoves.add(move);
@@ -51,6 +57,7 @@ public class King extends Piece {
             }
         }
 
+        // Same as previous if statement
         if ((r+1) < 8) {
             int[] pMove = {r + 1, c};
             boolean check = false;
@@ -72,7 +79,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if ((c+1) < 8) {
             int[] pMove = {r, c + 1};
             boolean check = false;
@@ -94,7 +101,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if ((c-1) >= 0) {
             int[] pMove = {r, c - 1};
             boolean check = false;
@@ -117,7 +124,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if (((r-1) >= 0) && ((c-1) >= 0)) {
             int[] pMove = {r - 1, c - 1};
             boolean check = false;
@@ -139,7 +146,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if (((r+1) < 8) && ((c-1) >= 0)) {
             int[] pMove = {r + 1, c - 1};
             boolean check = false;
@@ -161,7 +168,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if (((r-1) >= 0) && ((c+1) < 8)) {
             int[] pMove = {r - 1, c + 1};
             boolean check = false;
@@ -183,7 +190,7 @@ public class King extends Piece {
                 }
             }
         }
-
+        // Same as previous if statement
         if (((r+1) < 8) && ((c+1) < 8)) {
             int[] pMove = {r + 1, c + 1};
             boolean check = false;
@@ -214,6 +221,7 @@ public class King extends Piece {
         return possibleMoves;
     }
 
+    // Function that checks if a move array has the same values as a move array inside of the possible moves arraylist
     public boolean pieceListContains(ArrayList<int[]> moveList, int[] inputArray) {
         for (int i = 0; i < moveList.size(); i++) {
             int moveR = moveList.get(i)[0];
