@@ -21,18 +21,18 @@ public class App {
 		frame.setSize(xWidth, yWidth);
 		frame.setLayout(new BorderLayout());
 		center.setLayout(new GridLayout(8, 8));
-		King king = new King(0, 4, 3);
+		Pawn pawn = new Pawn(1, 5, 3);
 		Knight knight = new Knight(1, 0, 1);
-		Knight rook = new Knight(1, 4, 2);
+		Knight rook = new Knight(0, 4, 2);
 		Rook rook2 = new Rook (0, 2, 4);
 
 		// Rook rook
-		pieceList.add(king);
+		pieceList.add(pawn);
 		pieceList.add(knight);
 		pieceList.add(rook);
 		pieceList.add(rook2);
 
-		ArrayList<int[]> rookMoves = king.getPossibleMoves();
+		ArrayList<int[]> rookMoves = pawn.getPossibleMoves();
 		for(int i = 0; i<rookMoves.size(); i++) {
 			System.out.println(rookMoves.get(i)[0] + ":" + rookMoves.get(i)[1]);
 		}
