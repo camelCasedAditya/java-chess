@@ -22,7 +22,7 @@ public class App {
 		frame.setLayout(new BorderLayout());
 		center.setLayout(new GridLayout(8, 8));
 		King king = new King(0, 4, 3);
-		Knight knight = new Knight(0, 0, 1);
+		Knight knight = new Knight(1, 0, 1);
 		Knight rook = new Knight(0, 4, 2);
 		Rook rook2 = new Rook (0, 2, 4);
 
@@ -71,9 +71,10 @@ public class App {
 			return true;
 		}
 		else {
+			System.out.println("TEST");
 			for (int i = 0; i < pieceList.size(); i++) {
-				if (((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col)
-						&& (pieceList.get(i).getColor() != color))) {
+				if (((pieceList.get(i).getRow() == row) && (pieceList.get(i).getCol() == col))
+						&& (pieceList.get(i).getColor() != color)) {
 					return true;
 				}
 			}

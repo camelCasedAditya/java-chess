@@ -42,7 +42,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r -1, c) != this) {
                     if(App.isSquareAvailible(this.color, r - 1, c) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r - 1, c};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -64,9 +64,9 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r + 1, c) != this) {
                     if(App.isSquareAvailible(this.color, r + 1, c) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r+1, c};
                         possibleMoves.add(move);
-                        System.out.println(move[0] + ":" + move[1]);
+                       //System.out.println(move[0] + ":" + move[1]);
                     }
                 }
             }
@@ -86,7 +86,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r, c + 1) != this) {
                     if(App.isSquareAvailible(this.color, r, c + 1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r, c+1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -107,8 +107,9 @@ public class King extends Piece {
 
             if (check == false) {
                 if(App.getPiece(r, c - 1) != this) {
+                    System.out.println(App.isSquareAvailible(this.color, r, c - 1));
                     if(App.isSquareAvailible(this.color, r, c - 1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r, c-1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -130,7 +131,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r-1, c-1) != this) {
                     if(App.isSquareAvailible(this.color, r-1, c-1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r - 1, c - 1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -152,7 +153,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r+1, c-1) != this) {
                     if(App.isSquareAvailible(this.color, r+1, c-1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r+1, c-1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -161,7 +162,7 @@ public class King extends Piece {
         }
 
         if (((r-1) >= 0) && ((c+1) < 8)) {
-            int[] pMove = {r + 1, c - 1};
+            int[] pMove = {r - 1, c + 1};
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if(App.pieceList.get(i) != this) {
@@ -174,7 +175,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r-1, c+1) != this) {
                     if(App.isSquareAvailible(this.color, r-1, c+1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r-1, c+1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
@@ -183,7 +184,7 @@ public class King extends Piece {
         }
 
         if (((r+1) < 8) && ((c+1) < 8)) {
-            int[] pMove = {r + 1, c - 1};
+            int[] pMove = {r + 1, c + 1};
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
                 if (App.pieceList.get(i) != this) {
@@ -196,7 +197,7 @@ public class King extends Piece {
             if (check == false) {
                 if(App.getPiece(r+1, c+1) != this) {
                     if(App.isSquareAvailible(this.color, r+1, c+1) == true) {
-                        int[] move = {r, c};
+                        int[] move = {r + 1 , c + 1};
                         possibleMoves.add(move);
                         //System.out.println(move[0] + ":" + move[1]);
                     }
