@@ -44,6 +44,9 @@ public class App implements ActionListener {
 	final int PROMOTION=2;
 	int state=CHOOSEPIECE;
 
+	King whiteKing = new King(WHITE_COLOR, 7, 4);
+	King blackKing = new King(BLACK_COLOR, 0, 4);
+
 	public App() {
 		// Sets size of screen
 		frame.setSize(xWidth, yWidth);
@@ -101,8 +104,7 @@ public class App implements ActionListener {
 		Bishop blackBishop1 = new Bishop(BLACK_COLOR, 0, 2);
 		Bishop blackBishop2 = new Bishop(BLACK_COLOR, 0, 5);
 
-		King whiteKing = new King(WHITE_COLOR, 4, 4);
-		King blackKing = new King(BLACK_COLOR, 0, 4);
+		
 
 		Queen whiteQueen = new Queen(WHITE_COLOR, 7, 3);
 		Queen blackQueen = new Queen(BLACK_COLOR, 0, 3);
@@ -145,7 +147,7 @@ public class App implements ActionListener {
 		pieceList.add(blackKnight2);
 
 		pieceList.add(whiteBishop1);
-		//pieceList.add(whiteBishop2);
+		pieceList.add(whiteBishop2);
 		pieceList.add(blackBishop1);
 		pieceList.add(blackBishop2);
 
@@ -236,17 +238,17 @@ public class App implements ActionListener {
 			findPieceOptions(event);
 		}
 		else if(pieceClickedCheck!= null && state==MOVEPIECE) {
-			movePiece(event);
 			state=CHOOSEPIECE;
+			movePiece(event);
 		}
 	}
 	public void findPieceOptions(ActionEvent event) {
 		for(int i=0; i<button.length; i++) {
 			for(int j = 0; j< button[0].length; j++) {
 				if(event.getSource().equals(button[i][j])) {
-					pieceClickedCheck = getPiece(i,j);
-					System.out.println(pieceClickedCheck.getPieceName());
-					if(pieceClickedCheck!=null) {
+					//System.out.println(pieceClickedCheck.getPieceName());
+					if(getPiece(i,j)!=null) {
+						pieceClickedCheck = getPiece(i,j);
 						System.out.println("MOVES:" + (pieceClickedCheck.numberOfPossibleMoves() > 0));
 						if ((pieceClickedCheck.numberOfPossibleMoves() > 0) && (pieceClickedCheck.getColor() == turn)){
 							pieceClicked = getPiece(i,j);
@@ -283,12 +285,11 @@ public class App implements ActionListener {
 			for(int j = 0; j< button[0].length; j++) {
 				if(event.getSource().equals(button[i][j])) {
 					if((button[i][j]).getBackground()==Color.YELLOW) {
-						Piece test = App.getPiece(oldPieceRow, oldPieceCol);
 						if(App.getPiece(i, j) != null) {
 							pieceList.remove(App.getPiece(i, j));
 							getPiece(oldPieceRow, oldPieceCol).setOnStartingSquare(false);
 							getPiece(oldPieceRow, oldPieceCol).changeCords(i, j);
-							System.out.println("REMOVED THE " + test.getPieceName());
+							//System.out.println("REMOVED THE " + test.getPieceName());
 
 							// if((getPiece(oldPieceRow, oldPieceCol).getPieceName().equals("Pawn") == true) && (getPiece(oldPieceRow, oldPieceCol).getColor() == 1) && (i == 0)) {
 
@@ -299,7 +300,7 @@ public class App implements ActionListener {
 						else {
 							getPiece(oldPieceRow, oldPieceCol).setOnStartingSquare(false);
 							getPiece(oldPieceRow, oldPieceCol).changeCords(i, j);
-							System.out.println("PAWN " + test.getOnStartingSquare());
+							//System.out.println("PAWN " + test.getOnStartingSquare());
 						}
 
 						if (turn == BLACK_COLOR) {
@@ -313,6 +314,9 @@ public class App implements ActionListener {
 //						pieceName.setRow(i);
 //						newPiece.setCol(j);
 //						pieceName.setCol(newPiece.getCol());
+						if (whiteKing.isInMate()) {
+							System.out.println("BLACK WON");
+						}
 						clearBoard();
 						refreshBoard();
 						frame.repaint();
@@ -327,6 +331,9 @@ public class App implements ActionListener {
 //								
 //							}
 //						}
+					}
+					else {
+						state=MOVEPIECE;
 					}
 //					for (int k = 0; k < pieceList.size(); k++) {
 //						System.out.println(j);

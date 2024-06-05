@@ -269,7 +269,7 @@ public class King extends Piece {
     }
 
     // Function that checks if a move array has the same values as a move array inside of the possible moves arraylist
-    public boolean pieceListContains(ArrayList<int[]> moveList, int[] inputArray) {
+    public static boolean pieceListContains(ArrayList<int[]> moveList, int[] inputArray) {
         for (int i = 0; i < moveList.size(); i++) {
             int moveR = moveList.get(i)[0];
             int moveC = moveList.get(i)[1];
