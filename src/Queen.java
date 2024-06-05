@@ -144,10 +144,10 @@ public class Queen extends Piece{
         }
         r = this.row;
         c = this.col;
-        System.out.println(r);
-        System.out.println(c);
+        //System.out.println(r);
+        //System.out.println(c);
         while((r < 8) && (c >= 0)) {
-            System.out.println(r);
+            //System.out.println(r);
 
             if(App.getPiece(r, c) != this) {
                 if(App.isSquareAvailible(this.color, r, c) == true) {

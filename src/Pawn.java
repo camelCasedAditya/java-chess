@@ -15,18 +15,18 @@ public class Pawn extends Piece {
         possibleMoves.clear();
         int r = this.row;
         int c = this.col;
-        System.out.println("TEST");
+        //System.out.println("TEST");
         if (this.color == 0) {
-            System.out.println("TEST");
+            //System.out.println("TEST");
             if (onStartingSquare == true) {
-                System.out.println("TEST");
+                //System.out.println("TEST");
                 if ((App.isSquareAvailible(color, r+2, c) == true) && (App.isSquareAvailible(color, r+1, c) == true) && (App.getPiece(r+1, c) == null) && (App.getPiece(r+2, c) == null)) {
                     int[] pMove = {r+2, c};
                     possibleMoves.add(pMove);
                 }
 
                 if ((App.isSquareAvailible(color, r+1, c) == true) && (App.getPiece(r+1, c) == null) && (r+1 < 8)) {
-                    System.out.println("TEST");
+                    //System.out.println("TEST");
                     int[] pMove = {r+1, c};
                     possibleMoves.add(pMove);
                 }
@@ -41,9 +41,9 @@ public class Pawn extends Piece {
                 }
             }
             else {
-                System.out.println("TEST");
+                //System.out.println("TEST");
                 if ((App.isSquareAvailible(color, r+1, c) == true) && (App.getPiece(r+1, c) == null) && (r+1 < 8)) {
-                    System.out.println("TEST");
+                    //System.out.println("TEST");
                     int[] pMove = {r+1, c};
                     possibleMoves.add(pMove);
                 }
@@ -60,16 +60,16 @@ public class Pawn extends Piece {
         }
 
         if (this.color == 1) {
-            System.out.println("TEST");
+            //System.out.println("TEST");
             if (onStartingSquare == true) {
-                System.out.println("TEST");
+                //System.out.println("TEST");
                 if ((App.isSquareAvailible(color, r-2, c) == true) && (App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (App.getPiece(r-2, c) == null)) {
                     int[] pMove = {r-2, c};
                     possibleMoves.add(pMove);
                 }
 
                 if ((App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (r-1 < 8)) {
-                    System.out.println("TEST");
+                    //System.out.println("TEST");
                     int[] pMove = {r-1, c};
                     possibleMoves.add(pMove);
                 }
@@ -84,9 +84,9 @@ public class Pawn extends Piece {
                 }
             }
             else {
-                System.out.println("TEST");
+                //System.out.println("TEST");
                 if ((App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (r-1 < 8)) {
-                    System.out.println("TEST");
+                    //System.out.println("TEST");
                     int[] pMove = {r-1, c};
                     possibleMoves.add(pMove);
                 }

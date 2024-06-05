@@ -43,7 +43,7 @@ public class King extends Piece {
         possibleMoves.clear();
         int r = this.row;
         int c = this.col;
-        System.out.println(this.row + "::" + this.col);
+        //System.out.println(this.row + "::" + this.col);
         //int[] move = {r, c};
         
         // checks if king can move 1 row up
@@ -140,7 +140,7 @@ public class King extends Piece {
             this.setCol(c);
             if (check == false) {
                 if(App.getPiece(r, c - 1) != this) {
-                    System.out.println(App.isSquareAvailible(this.color, r, c - 1));
+                    //System.out.println(App.isSquareAvailible(this.color, r, c - 1));
                     if(App.isSquareAvailible(this.color, r, c - 1) == true) {
                         int[] move = {r, c-1};
                         possibleMoves.add(move);
@@ -244,7 +244,7 @@ public class King extends Piece {
                     // for (int j =0; j<test.size(); j++) {
                     //     System.out.println("check : " + test.get(j)[0] + ":" + test.get(j)[1]);
                     // }
-                    System.out.println(App.pieceList.get(i).getPossibleMoves().contains(pMove));
+                    //System.out.println(App.pieceList.get(i).getPossibleMoves().contains(pMove));
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
@@ -284,5 +284,19 @@ public class King extends Piece {
     public int numberOfPossibleMoves() {
         possibleMoves = this.getPossibleMoves();
         return possibleMoves.size();
+    }
+
+    public boolean isInCheck() {
+        ArrayList<int[]> checkList = this.getPossibleMoves();
+        int[] move = {this.row, this.col};
+        for (int i = 0; i < App.pieceList.size(); i++) {
+        	if(App.pieceList.get(i).getPieceName().equals("King") == false) {
+                if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), move) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
