@@ -5,13 +5,26 @@ public class King extends Piece {
     boolean mate;
     boolean check;
 
+    String symbol;
+
     ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
 
     public King (int color, int row, int col) {
         super(color, row, col,"King");
         this.mate = false;
         this.check = false;
+
+        if (color == 1) {
+            symbol = "♔";
+        }
+        else{
+            symbol="♚";
+        }
         
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public boolean getMate() {

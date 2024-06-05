@@ -2,12 +2,22 @@ import java.util.ArrayList;
 
 public class Bishop extends Piece {
 
-
+    String symbol;
 
     ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
 
     public Bishop (int color, int row, int col) {
         super(color, row, col,"Bishop");
+        if (color == 1) {
+            symbol = "♗";
+        }
+        else{
+            symbol="♝";
+        }
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
     // public int getColor() {
     //     return color;

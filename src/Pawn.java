@@ -3,12 +3,23 @@ import java.util.ArrayList;
 public class Pawn extends Piece {
 
     boolean enPassantAvailble;
+    String symbol;
 
     ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
 
     public Pawn (int color, int row, int col) {
         super(color, row, col, "Pawn");
         enPassantAvailble = false;
+        if (color == 1) {
+            symbol = "♙";
+        }
+        else{
+            symbol="♟";
+        }
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public ArrayList<int[]> getPossibleMoves() {

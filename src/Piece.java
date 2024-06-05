@@ -6,6 +6,7 @@ public class Piece {
     int col;
     boolean onStartingSquare;
     String pieceName;
+    String symbol;
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
 
@@ -15,6 +16,11 @@ public class Piece {
         this.col = col;
         this.pieceName=pieceName;
         this.onStartingSquare = true;
+        symbol = "-";
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public int getColor() {

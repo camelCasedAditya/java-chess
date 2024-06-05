@@ -2,10 +2,23 @@ import java.util.ArrayList;
 
 public class Knight extends Piece {
 
+    String symbol;
+
     ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
 
     public Knight (int color, int row, int col) {
         super(color, row, col, "Knight");
+
+        if (color == 1) {
+            symbol = "♘";
+        }
+        else{
+            symbol="♞";
+        }
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
     
     public ArrayList<int[]> getPossibleMoves() {

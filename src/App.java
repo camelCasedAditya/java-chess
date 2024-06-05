@@ -14,11 +14,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 public class App implements ActionListener {
 	final static int BLACK_COLOR = 0;
 	final static int WHITE_COLOR = 1;
 	int turn = WHITE_COLOR;
+	int removedIndex;
+	boolean pieceAddingBack = false;
 	static ArrayList<Piece> pieceList = new ArrayList<Piece>();
+	static ArrayList<Piece> removedPieces = new ArrayList<Piece>();
 	JFrame frame = new JFrame();
 	int xWidth = 800;
 	int yWidth = 800;
@@ -179,8 +186,9 @@ public class App implements ActionListener {
 		for (int i = 0; i < button.length; i++) {
 			// j is for column
 			for (int j = 0; j < button[0].length; j++) {
-				button[i][j] = new JButton((i + 0) + ":" + (j + 0));
+				button[i][j] = new JButton();
 				center.add(button[i][j]);
+				button[i][j].setFont(new Font("Arial", Font.PLAIN, 40));
 				button[i][j].addActionListener(this);
 				button[i][j].setOpaque(true);
 			}
@@ -299,6 +307,13 @@ public class App implements ActionListener {
 				if(event.getSource().equals(button[i][j])) {
 					if((button[i][j]).getBackground()==Color.YELLOW) {
 						if(App.getPiece(i, j) != null) {
+
+							// BUG FIX NEEDED
+							// IF A PIECE MOVES THAT IS PINNED AND CAPTURES ANOTHER PIECE THE MOVE IS UNDONE BUT THE CAPTURED PIECE IS NORE PLACED BACK
+							// FIX ASAP
+							removedPieces.add(App.getPiece(i, j));
+							removedIndex = removedPieces.size()-1;
+							pieceAddingBack = true;
 							pieceList.remove(App.getPiece(i, j));
 							getPiece(oldPieceRow, oldPieceCol).setOnStartingSquare(false);
 							getPiece(oldPieceRow, oldPieceCol).changeCords(i, j);
@@ -313,6 +328,7 @@ public class App implements ActionListener {
 						else {
 							getPiece(oldPieceRow, oldPieceCol).setOnStartingSquare(false);
 							getPiece(oldPieceRow, oldPieceCol).changeCords(i, j);
+							pieceAddingBack = false;
 							//System.out.println("PAWN " + test.getOnStartingSquare());
 						}
 
@@ -329,19 +345,14 @@ public class App implements ActionListener {
 //						pieceName.setCol(newPiece.getCol());
 
 						System.out.println("CHECK " + (whiteKing.isInCheck() == true));
-						if (whiteKing.isInMate()) {
-							System.out.println("BLACK WON");
-							JOptionPane.showMessageDialog(frame, "BLACK WON");
-							resetBoard();
-						}
-						else if (blackKing.isInMate()) {
-							System.out.println("WHITE WON");
-							JOptionPane.showMessageDialog(frame, "WHITE WON");
-							resetBoard();
-						}
+						
 						if(whiteKing.isInCheck() == true) {
 							System.out.println("WHITE IN CHECK");
 							if(getPiece(i, j).getColor() == WHITE_COLOR) {
+								if (pieceAddingBack == true) {
+									pieceList.add(removedPieces.get(removedIndex));
+									removedPieces.remove(removedPieces.get(removedIndex));
+								}
 								JOptionPane.showMessageDialog(frame, "WHITE IS IN CHECK");
 								getPiece(i, j).changeCords(oldPieceRow, oldPieceCol);
 							}
@@ -353,6 +364,10 @@ public class App implements ActionListener {
 							System.out.println("BLACK IN CHECK");
 							whiteKingInCheck = true;
 							if (getPiece(i, j).getColor() == BLACK_COLOR) {
+								if (pieceAddingBack == true) {
+									pieceList.add(removedPieces.get(removedIndex));
+									removedPieces.remove(removedPieces.get(removedIndex));
+								}
 								JOptionPane.showMessageDialog(frame, "BLACK IS IN CHECK");
 								getPiece(i, j).changeCords(oldPieceRow, oldPieceCol);
 							}
@@ -364,6 +379,17 @@ public class App implements ActionListener {
 						}
 						if(blackKing.isInCheck() == false) {
 							whiteKingInCheck = false;
+						}
+
+						if (whiteKing.isInMate()) {
+							System.out.println("BLACK WON");
+							JOptionPane.showMessageDialog(frame, "BLACK WON");
+							resetBoard();
+						}
+						else if (blackKing.isInMate()) {
+							System.out.println("WHITE WON");
+							JOptionPane.showMessageDialog(frame, "WHITE WON");
+							resetBoard();
 						}
 						clearBoard();
 						refreshBoard();
@@ -399,10 +425,10 @@ public class App implements ActionListener {
 			int row = pieceList.get(i).getRow();
 			int col = pieceList.get(i).getCol();
 			if(pieceList.get(i).getColor() == 1) {
-				button[row][col].setText("W " + pieceList.get(i).getPieceName());
+				button[row][col].setText(pieceList.get(i).getSymbol());
 			}
 			else {
-				button[row][col].setText("B " + pieceList.get(i).getPieceName());
+				button[row][col].setText(pieceList.get(i).getSymbol());
 			}
 		}
 	}
