@@ -2,14 +2,12 @@ import java.util.ArrayList;
 
 public class Pawn extends Piece {
 
-    boolean onStartingSquare;
     boolean enPassantAvailble;
 
     ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
 
     public Pawn (int color, int row, int col) {
         super(color, row, col, "Pawn");
-        onStartingSquare = true;
         enPassantAvailble = false;
     }
 
@@ -62,13 +60,16 @@ public class Pawn extends Piece {
         }
 
         if (this.color == 1) {
+            System.out.println("TEST");
             if (onStartingSquare == true) {
-                if ((App.isSquareAvailible(color, r+2, c) == true) && (App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (App.getPiece(r-2, c) == null)) {
+                System.out.println("TEST");
+                if ((App.isSquareAvailible(color, r-2, c) == true) && (App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (App.getPiece(r-2, c) == null)) {
                     int[] pMove = {r-2, c};
-                    this.onStartingSquare = false;
                     possibleMoves.add(pMove);
                 }
+
                 if ((App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (r-1 < 8)) {
+                    System.out.println("TEST");
                     int[] pMove = {r-1, c};
                     possibleMoves.add(pMove);
                 }
@@ -83,7 +84,9 @@ public class Pawn extends Piece {
                 }
             }
             else {
+                System.out.println("TEST");
                 if ((App.isSquareAvailible(color, r-1, c) == true) && (App.getPiece(r-1, c) == null) && (r-1 < 8)) {
+                    System.out.println("TEST");
                     int[] pMove = {r-1, c};
                     possibleMoves.add(pMove);
                 }
@@ -108,5 +111,10 @@ public class Pawn extends Piece {
 			}
 		}
         return false;
+    }
+
+    public int numberOfPossibleMoves() {
+        possibleMoves = this.getPossibleMoves();
+        return possibleMoves.size();
     }
 }

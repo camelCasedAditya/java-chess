@@ -1,3 +1,4 @@
+//package App;
 import java.util.ArrayList;
 
 public class King extends Piece {
@@ -20,11 +21,22 @@ public class King extends Piece {
         return check;
     }
 
-    // public boolean isInMate() {
-    //     ArrayList<int[]> mateList = this.getPossibleMoves();
-
-    //     if (mathList.size() == 0) {}
-    // }
+    public boolean isInMate() {
+        ArrayList<int[]> mateList = this.getPossibleMoves();
+        int[] move = {this.row, this.col};
+        
+        if (mateList.size() == 0) {
+        	for (int i = 0; i < App.pieceList.size(); i++) {
+        		if(App.pieceList.get(i).getPieceName().equals("King") == false) {
+                    if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), move) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
+                        this.mate = true;
+                        return true;
+                    }
+                }
+        	}
+        }
+        return false;
+    }
 
     // Function to get possible moves
     public ArrayList<int[]> getPossibleMoves() {
@@ -39,10 +51,11 @@ public class King extends Piece {
             // Move that we are checking
             int[] pMove = {r - 1, c};
             boolean check = false;
+            this.setRow(r-1);
             // loops through every piece on the board
             for (int i = 0; i < App.pieceList.size(); i++) {
                 // if piece is not this piece
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     // If that piece can move to this possible square (meaning a check on the king)
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         // Say that there would be a check if the king moved there making it an illegal move
@@ -50,6 +63,7 @@ public class King extends Piece {
                     }
                 }
             }
+            this.setRow(r);
             // If there is no check then we see if there are any pieces on that square
             if (check == false) {
                 if(App.getPiece(r -1, c) != this) {
@@ -67,14 +81,15 @@ public class King extends Piece {
         if ((r+1) < 8) {
             int[] pMove = {r + 1, c};
             boolean check = false;
+            this.setRow(r+1);
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
-
+            this.setRow(r);
             if (check == false) {
                 if(App.getPiece(r + 1, c) != this) {
                     if(App.isSquareAvailible(this.color, r + 1, c) == true) {
@@ -89,13 +104,16 @@ public class King extends Piece {
         if ((c+1) < 8) {
             int[] pMove = {r, c + 1};
             boolean check = false;
+            this.setCol(c+1);
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
+            
+            this.setCol(c);
 
             if (check == false) {
                 if(App.getPiece(r, c + 1) != this) {
@@ -111,14 +129,15 @@ public class King extends Piece {
         if ((c-1) >= 0) {
             int[] pMove = {r, c - 1};
             boolean check = false;
+            this.setCol(c-1);
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
-
+            this.setCol(c);
             if (check == false) {
                 if(App.getPiece(r, c - 1) != this) {
                     System.out.println(App.isSquareAvailible(this.color, r, c - 1));
@@ -132,16 +151,19 @@ public class King extends Piece {
         }
         // Same as previous if statement
         if (((r-1) >= 0) && ((c-1) >= 0)) {
+        	this.setRow(r-1);
+        	this.setCol(c-1);
             int[] pMove = {r - 1, c - 1};
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
-
+            this.setRow(r);
+        	this.setCol(c);
             if (check == false) {
                 if(App.getPiece(r-1, c-1) != this) {
                     if(App.isSquareAvailible(this.color, r-1, c-1) == true) {
@@ -154,16 +176,21 @@ public class King extends Piece {
         }
         // Same as previous if statement
         if (((r+1) < 8) && ((c-1) >= 0)) {
+        	this.setRow(r+1);
+        	this.setCol(c-1);
             int[] pMove = {r + 1, c - 1};
             boolean check = false;
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
 
+            this.setRow(r);
+        	this.setCol(c);
+            
             if (check == false) {
                 if(App.getPiece(r+1, c-1) != this) {
                     if(App.isSquareAvailible(this.color, r+1, c-1) == true) {
@@ -178,14 +205,21 @@ public class King extends Piece {
         if (((r-1) >= 0) && ((c+1) < 8)) {
             int[] pMove = {r - 1, c + 1};
             boolean check = false;
+            
+            this.setRow(r-1);
+        	this.setCol(c+1);
+            
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if(App.pieceList.get(i) != this) {
+                if(App.pieceList.get(i).getPieceName().equals("King") == false) {
                     if ((pieceListContains(App.pieceList.get(i).getPossibleMoves(), pMove) == true)  && (App.pieceList.get(i).getColor() != this.color)) {
                         check = true;
                     }
                 }
             }
 
+            this.setRow(r);
+        	this.setCol(c);
+            
             if (check == false) {
                 if(App.getPiece(r-1, c+1) != this) {
                     if(App.isSquareAvailible(this.color, r-1, c+1) == true) {
@@ -200,8 +234,12 @@ public class King extends Piece {
         if (((r+1) < 8) && ((c+1) < 8)) {
             int[] pMove = {r + 1, c + 1};
             boolean check = false;
+            
+            this.setRow(r+1);
+        	this.setCol(c+1);
+            
             for (int i = 0; i < App.pieceList.size(); i++) {
-                if (App.pieceList.get(i) != this) {
+                if (App.pieceList.get(i).getPieceName().equals("King") == false) {
                     ArrayList<int[]> test = App.pieceList.get(2).getPossibleMoves();
                     // for (int j =0; j<test.size(); j++) {
                     //     System.out.println("check : " + test.get(j)[0] + ":" + test.get(j)[1]);
@@ -213,6 +251,9 @@ public class King extends Piece {
                 }
             }
 
+            this.setRow(r);
+        	this.setCol(c);
+            
             if (check == false) {
                 if(App.getPiece(r+1, c+1) != this) {
                     if(App.isSquareAvailible(this.color, r+1, c+1) == true) {
@@ -238,5 +279,10 @@ public class King extends Piece {
         }
 
         return false;
+    }
+
+    public int numberOfPossibleMoves() {
+        possibleMoves = this.getPossibleMoves();
+        return possibleMoves.size();
     }
 }

@@ -9,6 +9,9 @@ public class Knight extends Piece {
     }
     
     public ArrayList<int[]> getPossibleMoves() {
+
+        possibleMoves.clear();
+
         int r = this.row;
         int c = this.col;
 
@@ -125,5 +128,9 @@ public class Knight extends Piece {
         }
 
         return possibleMoves;
+    }
+    public int numberOfPossibleMoves() {
+        possibleMoves = this.getPossibleMoves();
+        return possibleMoves.size();
     }
 }

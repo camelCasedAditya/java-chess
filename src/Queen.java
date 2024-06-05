@@ -170,5 +170,10 @@ public class Queen extends Piece{
 
         return possibleMoves;
     }
+
+    public int numberOfPossibleMoves() {
+        possibleMoves = this.getPossibleMoves();
+        return possibleMoves.size();
+    }
     
 }

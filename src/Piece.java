@@ -4,6 +4,7 @@ public class Piece {
     int color;
     int row;
     int col;
+    boolean onStartingSquare;
     String pieceName;
 
     ArrayList<Integer> possibleMoves = new ArrayList<Integer>();
@@ -13,6 +14,7 @@ public class Piece {
         this.row = row;
         this.col = col;
         this.pieceName=pieceName;
+        this.onStartingSquare = true;
     }
 
     public int getColor() {
@@ -32,6 +34,13 @@ public class Piece {
     public void setCol(int col) {
         this.col = col;
     }
+    public boolean getOnStartingSquare() {
+        return this.onStartingSquare;
+    }
+
+    public void setOnStartingSquare(boolean onStartingSquareCondition) {
+        this.onStartingSquare = onStartingSquareCondition;
+    }
 
     public String getPieceName() {
         return this.pieceName;
@@ -44,7 +53,10 @@ public class Piece {
     	this.row = row;
     	this.col = col;
     }
-
+    
+    public int numberOfPossibleMoves() {
+        return 0;
+    }
 
 
     // public static addPiece
