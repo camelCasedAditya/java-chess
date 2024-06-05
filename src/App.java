@@ -47,11 +47,11 @@ public class App implements ActionListener {
 	static boolean whiteKingInCheck = false;
 	static boolean blackKingInCheck = false;
 
-	King whiteKing = new King(WHITE_COLOR, 4, 4);
+	King whiteKing = new King(WHITE_COLOR, 7, 4);
 	King blackKing = new King(BLACK_COLOR, 0, 4);
 
-	Rook testRook = new Rook (BLACK_COLOR, 4, 0);
-	Rook testRook2 = new Rook (WHITE_COLOR, 3, 3);
+	// Rook testRook = new Rook (BLACK_COLOR, 4, 0);
+	// Rook testRook2 = new Rook (WHITE_COLOR, 3, 3);
 
 
 
@@ -102,8 +102,8 @@ public class App implements ActionListener {
 		frame.setLayout(new BorderLayout());
 		center.setLayout(new GridLayout(8, 8));
 
-		pieceList.add(testRook);
-		pieceList.add(testRook2);
+		// pieceList.add(testRook);
+		// pieceList.add(testRook2);
 		// south.setLayout(new GridLayout(1, 4));
 		// south.add(queen);
 		// south.add(knight);
